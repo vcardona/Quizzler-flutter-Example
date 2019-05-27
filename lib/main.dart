@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 void main() => runApp(Quizzler());
 
@@ -63,12 +64,31 @@ class _QuizPageState extends State<QuizPage> {
     false, //  14
   ];
 
+  List<Question> preguntasLista = [
+    Question(q: 'You can lead a cow down', a: false),
+    Question(q: 'Iron Man', a: false),
+    Question(q: 'Superman', a: false),
+    Question(q: 'Batman', a: false),
+    Question(q: 'Thor', a: false),
+    Question(q: 'Green Lantern', a: false),
+    Question(q: 'Spawn', a: false),
+    Question(q: 'Goku', a: false),
+    Question(q: 'Bishop', a: false),
+    Question(q: 'Punisher', a: false),
+    Question(q: 'Compton', a: false),
+    Question(q: 'Grill', a: false),
+    Question(q: 'Force One', a: false),
+    Question(q: 'Paulina', a: true),
+    Question(q: 'Victor', a: true),
+  ];
+
   int questionNumber = 0;
 
   void cambioPreguntas(bool respuestaPregunta) {
     if (questionNumber < 14) {
       questionNumber++;
-      if (respuestaPregunta == respuestas[questionNumber - 1]) {
+      if (respuestaPregunta ==
+          preguntasLista[questionNumber - 1].questionAnswer) {
         scoreKeeper.add(
           Icon(
             Icons.check,
@@ -101,7 +121,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                preguntasLista[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
